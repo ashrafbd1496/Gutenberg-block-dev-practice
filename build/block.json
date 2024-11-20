@@ -3,10 +3,9 @@
   "apiVersion": 3,
   "name": "create-block/copyright-block",
   "version": "0.1.0",
-  "title": "Copyright Block",
-  "category": "widgets",
-  "icon": "smiley",
-  "description": "Example block scaffolded with Create Block tool.",
+  "title": "copyright-block",
+  "category": "text",
+  "description": "Starting Gutenberg Copyright block",
   "example": {},
   "supports": {
     "html": false

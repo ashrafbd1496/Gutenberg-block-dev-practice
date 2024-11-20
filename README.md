@@ -1,1 +1,1 @@
-# Gutenberg-block-dev-practice
+# Gutenberg Block Development Practice

@@ -31,8 +31,9 @@ import "./editor.scss";
  */
 export default function Edit() {
 	return (
-		<p {...useBlockProps()}>
-			{__("Copyright Block – This is my first block!", "copyright-block")}
-		</p>
+		<div>{__("Editing from edit.js", "copyright-block")}</div>
+		// <p {...useBlockProps()}>
+		// 	{__("Copyright Block – This is my first block!", "copyright-block")}
+		// </p>
 	);
 }
