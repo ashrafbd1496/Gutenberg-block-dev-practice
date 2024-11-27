@@ -12,7 +12,7 @@ export default function Edit() {
 					<ToolbarButton
 						icon="edit"
 						title="Edit"
-						onClick={() => "consolde log clicked"}
+						onClick={() => console.log("eidt icon clicked")}
 					></ToolbarButton>
 				</ToolbarGroup>
 			</BlockControls>
