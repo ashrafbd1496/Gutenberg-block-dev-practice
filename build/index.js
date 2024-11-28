@@ -32,7 +32,7 @@ __webpack_require__.r(__webpack_exports__);
 function Edit() {
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)();
   const [audio, setAudio] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(null);
-  const [message, setMessage] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)("");
+  const [message, setMessage] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(""); // State to store custom message
 
   // Preload the audio file
   (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(() => {
@@ -49,10 +49,11 @@ function Edit() {
       console.error("Audio not loaded yet.");
     }
   };
+
   // Function to show custom message
   const showMessage = text => {
     setMessage(text);
-    setTimeout(() => setMessage(""), 3000); // Clear message after 3 seconds
+    setTimeout(() => setMessage(""), 3000);
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.BlockControls, {
@@ -75,6 +76,16 @@ function Edit() {
           title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Tools", "copyright-block"),
           onClick: () => console.log((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Tools button clicked", "copyright-block"))
         })]
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+        title: "Block Settings",
+        initialOpen: false,
+        icon: "admin-settings",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+          label: "Enter Label",
+          onChange: textcontrol => console.log(textcontrol)
+        })
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
       ...blockProps,

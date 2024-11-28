@@ -1,13 +1,22 @@
 import { __ } from "@wordpress/i18n";
-import { useBlockProps, BlockControls } from "@wordpress/block-editor";
-import { ToolbarGroup, ToolbarButton } from "@wordpress/components";
+import {
+	useBlockProps,
+	BlockControls,
+	InspectorControls,
+} from "@wordpress/block-editor";
+import {
+	ToolbarGroup,
+	ToolbarButton,
+	PanelBody,
+	TextControl,
+} from "@wordpress/components";
 import { useEffect, useState } from "react";
 import "./editor.scss";
 
 export default function Edit() {
 	const blockProps = useBlockProps();
 	const [audio, setAudio] = useState(null);
-	const [message, setMessage] = useState("");
+	const [message, setMessage] = useState(""); // State to store custom message
 
 	// Preload the audio file
 	useEffect(() => {
@@ -26,11 +35,13 @@ export default function Edit() {
 			console.error("Audio not loaded yet.");
 		}
 	};
+
 	// Function to show custom message
 	const showMessage = (text) => {
 		setMessage(text);
-		setTimeout(() => setMessage(""), 3000); // Clear message after 3 seconds
+		setTimeout(() => setMessage(""), 3000);
 	};
+
 	return (
 		<>
 			<BlockControls>
@@ -61,6 +72,18 @@ export default function Edit() {
 					/>
 				</ToolbarGroup>
 			</BlockControls>
+			<InspectorControls>
+				<PanelBody
+					title="Block Settings"
+					initialOpen={false}
+					icon="admin-settings"
+				>
+					<TextControl
+						label="Enter Label"
+						onChange={(textcontrol) => console.log(textcontrol)}
+					/>
+				</PanelBody>
+			</InspectorControls>
 			<div {...blockProps}>{__("Editor Part", "copyright-block")}</div>
 			{/* Custom Message Container */}
 			{message && (
