@@ -9,6 +9,8 @@ import {
 	ToolbarButton,
 	PanelBody,
 	TextControl,
+	ColorPalette,
+	ToggleControl,
 } from "@wordpress/components";
 import { useEffect, useState } from "react";
 import "./editor.scss";
@@ -84,6 +86,15 @@ export default function Edit() {
 					/>
 				</PanelBody>
 			</InspectorControls>
+			<InspectorControls group="styles">
+				<PanelBody title="Block Style" initialOpen={false} icon="admin-generic">
+					<ColorPalette onChange={(color) => console.log(color)} />
+				</PanelBody>
+			</InspectorControls>
+			<InspectorControls group="advanced">
+				<ToggleControl label="Dark Mode" onChange={(on) => console.log(on)} />
+			</InspectorControls>
+
 			<div {...blockProps}>{__("Editor Part", "copyright-block")}</div>
 			{/* Custom Message Container */}
 			{message && (
