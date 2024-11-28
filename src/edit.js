@@ -7,6 +7,7 @@ import "./editor.scss";
 export default function Edit() {
 	const blockProps = useBlockProps();
 	const [audio, setAudio] = useState(null);
+	const [message, setMessage] = useState("");
 
 	// Preload the audio file
 	useEffect(() => {
@@ -25,7 +26,11 @@ export default function Edit() {
 			console.error("Audio not loaded yet.");
 		}
 	};
-
+	// Function to show custom message
+	const showMessage = (text) => {
+		setMessage(text);
+		setTimeout(() => setMessage(""), 3000); // Clear message after 3 seconds
+	};
 	return (
 		<>
 			<BlockControls>
@@ -42,7 +47,9 @@ export default function Edit() {
 						title={__("Delete", "copyright-block")}
 						onClick={() => {
 							playAlertSound();
-							alert(__("Want to delete?", "copyright-block"));
+							showMessage(
+								__("Are you sure you want to delete?", "copyright-block"),
+							);
 						}}
 					/>
 					<ToolbarButton
@@ -55,6 +62,21 @@ export default function Edit() {
 				</ToolbarGroup>
 			</BlockControls>
 			<div {...blockProps}>{__("Editor Part", "copyright-block")}</div>
+			{/* Custom Message Container */}
+			{message && (
+				<div
+					style={{
+						color: "white",
+						backgroundColor: "red",
+						padding: "10px",
+						borderRadius: "5px",
+						marginTop: "10px",
+						textAlign: "center",
+					}}
+				>
+					{message}
+				</div>
+			)}
 		</>
 	);
 }

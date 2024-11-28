@@ -32,6 +32,7 @@ __webpack_require__.r(__webpack_exports__);
 function Edit() {
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)();
   const [audio, setAudio] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(null);
+  const [message, setMessage] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)("");
 
   // Preload the audio file
   (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(() => {
@@ -48,6 +49,11 @@ function Edit() {
       console.error("Audio not loaded yet.");
     }
   };
+  // Function to show custom message
+  const showMessage = text => {
+    setMessage(text);
+    setTimeout(() => setMessage(""), 3000); // Clear message after 3 seconds
+  };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.BlockControls, {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToolbarGroup, {
@@ -62,7 +68,7 @@ function Edit() {
           title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Delete", "copyright-block"),
           onClick: () => {
             playAlertSound();
-            alert((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Want to delete?", "copyright-block"));
+            showMessage((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Are you sure you want to delete?", "copyright-block"));
           }
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToolbarButton, {
           icon: "admin-tools",
@@ -73,6 +79,16 @@ function Edit() {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
       ...blockProps,
       children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Editor Part", "copyright-block")
+    }), message && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+      style: {
+        color: "white",
+        backgroundColor: "red",
+        padding: "10px",
+        borderRadius: "5px",
+        marginTop: "10px",
+        textAlign: "center"
+      },
+      children: message
     })]
   });
 }
