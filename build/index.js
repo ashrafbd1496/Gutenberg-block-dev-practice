@@ -89,16 +89,17 @@ function Edit() {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
           label: "Enter Label",
           onChange: value => console.log(value)
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ExternalLink, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
           href: "https://github.com/ashrafbd1496/Gutenberg-block-dev-practice",
+          className: "custom-button",
+          target: "_blank",
+          rel: "noopener noreferrer",
           children: "Code"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-          style: {
-            margin: "0 5px"
-          },
-          children: "|"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ExternalLink, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
           href: "https://ashraf.nxtgendev.net",
+          className: "custom-button",
+          target: "_blank",
+          rel: "noopener noreferrer",
           children: "Portfolio"
         })]
       })

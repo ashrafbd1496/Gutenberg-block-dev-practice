@@ -12,7 +12,6 @@ import {
 	ColorPalette,
 	ToggleControl,
 	SelectControl,
-	ExternalLink,
 } from "@wordpress/components";
 import { useEffect, useState } from "react";
 import "./editor.scss";
@@ -90,13 +89,22 @@ export default function Edit() {
 						label="Enter Label"
 						onChange={(value) => console.log(value)}
 					/>
-					<ExternalLink href="https://github.com/ashrafbd1496/Gutenberg-block-dev-practice">
+					<a
+						href="https://github.com/ashrafbd1496/Gutenberg-block-dev-practice"
+						className="custom-button"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
 						Code
-					</ExternalLink>
-					<span style={{ margin: "0 5px" }}>|</span>
-					<ExternalLink href="https://ashraf.nxtgendev.net">
+					</a>
+					<a
+						href="https://ashraf.nxtgendev.net"
+						className="custom-button"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
 						Portfolio
-					</ExternalLink>
+					</a>
 				</PanelBody>
 			</InspectorControls>
 			<InspectorControls group="styles">
