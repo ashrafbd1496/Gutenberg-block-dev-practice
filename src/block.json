@@ -8,7 +8,7 @@
 	"description": "Starting Gutenberg Copyright block",
 	"example": {},
 	"supports": {
-		"html": false
+		"anchor": true
 	},
 	"textdomain": "copyright-block",
 	"editorScript": "file:./index.js",

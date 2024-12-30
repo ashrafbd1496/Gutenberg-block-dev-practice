@@ -11,6 +11,8 @@ import {
 	TextControl,
 	ColorPalette,
 	ToggleControl,
+	SelectControl,
+	ExternalLink,
 } from "@wordpress/components";
 import { useEffect, useState } from "react";
 import "./editor.scss";
@@ -19,6 +21,7 @@ export default function Edit() {
 	const blockProps = useBlockProps();
 	const [audio, setAudio] = useState(null);
 	const [message, setMessage] = useState(""); // State to store custom message
+	const [layout, setLayout] = useState("grid");
 
 	// Preload the audio file
 	useEffect(() => {
@@ -26,6 +29,9 @@ export default function Edit() {
 			"https://www.myinstants.com/media/sounds/windows-error.mp3",
 		);
 		newAudio.load();
+		newAudio.onerror = () => {
+			console.error("Failed to load audio.");
+		};
 		setAudio(newAudio);
 	}, []);
 
@@ -82,20 +88,35 @@ export default function Edit() {
 				>
 					<TextControl
 						label="Enter Label"
-						onChange={(textcontrol) => console.log(textcontrol)}
+						onChange={(value) => console.log(value)}
 					/>
+					<ExternalLink href="https://ashraf.nxtgendev.net">
+						Code
+					</ExternalLink>
 				</PanelBody>
 			</InspectorControls>
 			<InspectorControls group="styles">
 				<PanelBody title="Block Style" initialOpen={false} icon="admin-generic">
 					<ColorPalette onChange={(color) => console.log(color)} />
+					<SelectControl
+						label="Select Layout"
+						value={layout}
+						options={[
+							{ label: "Grid", value: "grid" },
+							{ label: "List", value: "list" },
+							{ label: "Masonry", value: "masonry" },
+						]}
+						onChange={(value) => setLayout(value)}
+					/>
 				</PanelBody>
 			</InspectorControls>
 			<InspectorControls group="advanced">
 				<ToggleControl label="Dark Mode" onChange={(on) => console.log(on)} />
 			</InspectorControls>
 
-			<div {...blockProps}>{__("Editor Part", "copyright-block")}</div>
+			<div {...blockProps}>
+				{__("Copyright Block Editor Part", "copyright-block")}
+			</div>
 			{/* Custom Message Container */}
 			{message && (
 				<div
@@ -107,6 +128,8 @@ export default function Edit() {
 						marginTop: "10px",
 						textAlign: "center",
 					}}
+					role="alert"
+					aria-live="polite"
 				>
 					{message}
 				</div>

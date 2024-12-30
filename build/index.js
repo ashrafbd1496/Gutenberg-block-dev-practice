@@ -33,11 +33,15 @@ function Edit() {
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)();
   const [audio, setAudio] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(null);
   const [message, setMessage] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(""); // State to store custom message
+  const [layout, setLayout] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)("grid");
 
   // Preload the audio file
   (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(() => {
     const newAudio = new Audio("https://www.myinstants.com/media/sounds/windows-error.mp3");
     newAudio.load();
+    newAudio.onerror = () => {
+      console.error("Failed to load audio.");
+    };
     setAudio(newAudio);
   }, []);
 
@@ -78,24 +82,41 @@ function Edit() {
         })]
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
         title: "Block Settings",
         initialOpen: false,
         icon: "admin-settings",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
           label: "Enter Label",
-          onChange: textcontrol => console.log(textcontrol)
-        })
+          onChange: value => console.log(value)
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ExternalLink, {
+          href: "https://ashraf.nxtgendev.net",
+          children: "Code"
+        })]
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
       group: "styles",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
         title: "Block Style",
         initialOpen: false,
         icon: "admin-generic",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPalette, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPalette, {
           onChange: color => console.log(color)
-        })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+          label: "Select Layout",
+          value: layout,
+          options: [{
+            label: "Grid",
+            value: "grid"
+          }, {
+            label: "List",
+            value: "list"
+          }, {
+            label: "Masonry",
+            value: "masonry"
+          }],
+          onChange: value => setLayout(value)
+        })]
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
       group: "advanced",
@@ -105,7 +126,7 @@ function Edit() {
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
       ...blockProps,
-      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Editor Part", "copyright-block")
+      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Copyright Block Editor Part", "copyright-block")
     }), message && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
       style: {
         color: "white",
@@ -115,6 +136,8 @@ function Edit() {
         marginTop: "10px",
         textAlign: "center"
       },
+      role: "alert",
+      "aria-live": "polite",
       children: message
     })]
   });
@@ -296,7 +319,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/copyright-block","version":"0.1.0","title":"copyright-block","category":"text","description":"Starting Gutenberg Copyright block","example":{},"supports":{"html":false},"textdomain":"copyright-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/copyright-block","version":"0.1.0","title":"copyright-block","category":"text","description":"Starting Gutenberg Copyright block","example":{},"supports":{"anchor":true},"textdomain":"copyright-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ })
 
