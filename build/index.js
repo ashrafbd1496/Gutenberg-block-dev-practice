@@ -90,8 +90,16 @@ function Edit() {
           label: "Enter Label",
           onChange: value => console.log(value)
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ExternalLink, {
-          href: "https://ashraf.nxtgendev.net",
+          href: "https://github.com/ashrafbd1496/Gutenberg-block-dev-practice",
           children: "Code"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+          style: {
+            margin: "0 5px"
+          },
+          children: "|"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ExternalLink, {
+          href: "https://ashraf.nxtgendev.net",
+          children: "Portfolio"
         })]
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {

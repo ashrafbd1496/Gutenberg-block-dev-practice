@@ -90,8 +90,12 @@ export default function Edit() {
 						label="Enter Label"
 						onChange={(value) => console.log(value)}
 					/>
-					<ExternalLink href="https://ashraf.nxtgendev.net">
+					<ExternalLink href="https://github.com/ashrafbd1496/Gutenberg-block-dev-practice">
 						Code
+					</ExternalLink>
+					<span style={{ margin: "0 5px" }}>|</span>
+					<ExternalLink href="https://ashraf.nxtgendev.net">
+						Portfolio
 					</ExternalLink>
 				</PanelBody>
 			</InspectorControls>
