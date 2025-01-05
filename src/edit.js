@@ -12,15 +12,26 @@ import {
 	ColorPalette,
 	ToggleControl,
 	SelectControl,
+	ColorPicker,
+	RangeControl,
+	CheckboxControl,
+	RadioControl,
 } from "@wordpress/components";
 import { useEffect, useState } from "react";
 import "./editor.scss";
 
-export default function Edit() {
+export default function Edit(props) {
+	// Pass props here
 	const blockProps = useBlockProps();
 	const [audio, setAudio] = useState(null);
 	const [message, setMessage] = useState(""); // State to store custom message
 	const [layout, setLayout] = useState("grid");
+
+	// Destructure attributes and setAttributes from props
+	const {
+		attributes: { fontSize = 16, backgroundColor, enableComments, alignment },
+		setAttributes,
+	} = props;
 
 	// Preload the audio file
 	useEffect(() => {
@@ -48,7 +59,6 @@ export default function Edit() {
 		setMessage(text);
 		setTimeout(() => setMessage(""), 3000);
 	};
-
 	return (
 		<>
 			<BlockControls>
@@ -109,7 +119,52 @@ export default function Edit() {
 			</InspectorControls>
 			<InspectorControls group="styles">
 				<PanelBody title="Block Style" initialOpen={false} icon="admin-generic">
-					<ColorPalette onChange={(color) => console.log(color)} />
+					{__("Background Color", "copyright-block")}
+					<ColorPalette
+						id="bg-color"
+						onChange={(color) => console.log(color)}
+					/>
+					<div className="color-picker-container">
+						<label htmlFor="color-picker" className="color-picker-label">
+							{__("Color Picker", "copyright-block")}
+						</label>
+						<ColorPicker
+							id="color-picker"
+							color={backgroundColor}
+							onChangeComplete={(value) =>
+								setAttributes({ backgroundColor: value.hex })
+							}
+						/>
+					</div>
+					<div className="range-control">
+						<RangeControl
+							label="Font Size"
+							value={fontSize}
+							onChange={(value) => setAttributes({ fontSize: value })}
+							min={10}
+							max={100}
+							step={1}
+						/>
+					</div>
+					<RadioControl
+						label="Select Alignment"
+						selected={alignment}
+						options={[
+							{ label: "Left", value: "left" },
+							{ label: "Center", value: "center" },
+							{ label: "Right", value: "right" },
+						]}
+						onChange={(value) => setAttributes({ alignment: value })}
+					/>
+
+					<div className="checkbox-control">
+						<CheckboxControl
+							label="Enable Comments"
+							checked={enableComments}
+							onChange={(value) => setAttributes({ enableComments: value })}
+						/>
+					</div>
+
 					<SelectControl
 						label="Select Layout"
 						value={layout}

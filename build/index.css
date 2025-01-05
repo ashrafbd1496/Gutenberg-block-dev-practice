@@ -27,4 +27,14 @@
   color: #fff;
 }
 
+.color-picker-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.color-picker-container {
+  margin-bottom: 1rem;
+}
+
 /*# sourceMappingURL=index.css.map*/

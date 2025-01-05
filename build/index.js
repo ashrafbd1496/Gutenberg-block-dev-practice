@@ -29,11 +29,23 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function Edit() {
+function Edit(props) {
+  // Pass props here
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)();
   const [audio, setAudio] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(null);
   const [message, setMessage] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(""); // State to store custom message
   const [layout, setLayout] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)("grid");
+
+  // Destructure attributes and setAttributes from props
+  const {
+    attributes: {
+      fontSize = 16,
+      backgroundColor,
+      enableComments,
+      alignment
+    },
+    setAttributes
+  } = props;
 
   // Preload the audio file
   (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(() => {
@@ -109,8 +121,59 @@ function Edit() {
         title: "Block Style",
         initialOpen: false,
         icon: "admin-generic",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPalette, {
+        children: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Background Color", "copyright-block"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPalette, {
+          id: "bg-color",
           onChange: color => console.log(color)
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "color-picker-container",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+            htmlFor: "color-picker",
+            className: "color-picker-label",
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Color Picker", "copyright-block")
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPicker, {
+            id: "color-picker",
+            color: backgroundColor,
+            onChangeComplete: value => setAttributes({
+              backgroundColor: value.hex
+            })
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+          className: "range-control",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.RangeControl, {
+            label: "Font Size",
+            value: fontSize,
+            onChange: value => setAttributes({
+              fontSize: value
+            }),
+            min: 10,
+            max: 100,
+            step: 1
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.RadioControl, {
+          label: "Select Alignment",
+          selected: alignment,
+          options: [{
+            label: "Left",
+            value: "left"
+          }, {
+            label: "Center",
+            value: "center"
+          }, {
+            label: "Right",
+            value: "right"
+          }],
+          onChange: value => setAttributes({
+            alignment: value
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+          className: "checkbox-control",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.CheckboxControl, {
+            label: "Enable Comments",
+            checked: enableComments,
+            onChange: value => setAttributes({
+              enableComments: value
+            })
+          })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
           label: "Select Layout",
           value: layout,
@@ -328,7 +391,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/copyright-block","version":"0.1.0","title":"copyright-block","category":"text","description":"Starting Gutenberg Copyright block","example":{},"supports":{"anchor":true},"textdomain":"copyright-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/copyright-block","version":"0.1.0","title":"copyright-block","category":"text","description":"Starting Gutenberg Copyright block","example":{},"supports":{"anchor":true,"align":true,"color":{"background":true,"text":true},"spacing":{"margin":true,"padding":true}},"textdomain":"copyright-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ })
 
